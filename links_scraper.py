@@ -53,7 +53,6 @@ def links_scraper():
     # print(link_list)
 
     # Checking if there are any duplicates in a list and getting rid of them
-
     def checkIfDuplicates(test_list):
         if len(test_list) == len(set(test_list)):
             print('No duplicates found.')

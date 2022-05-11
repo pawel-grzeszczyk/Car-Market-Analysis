@@ -6,28 +6,21 @@ def data_scraper():
   import pandas as pd
   import const
 
-  # creating list and storing links to offers inside it
-  link_list = []
-
-  with open('datasets/offer_links_{}.csv'.format(const.brand)) as csv_file:
-      reader=csv.reader(csv_file)
-      for link in reader:
-        link_list.append(link[0])
+  links = pd.read_csv('datasets/offer_links_tesla.csv', header=None)
 
   # paramteres that I'm looking for in the offers
   colnames = ['brand', 'model', 'production_year', 'mileage[KM]', 'fuel_type', 'power[HP]', 'gearbox', 'door_no', 'seat_no', 'color',
               'origin_country', 'status']
 
-  # prices
+  # prices list
   prices = []
 
   # connecting to links and getting information from them
-  for link in link_list:
-    URL = link
-    page = requests.get(URL).text
+  for link in links[0]:
+    page = requests.get(link).text
     soup = BeautifulSoup(page, 'lxml')
 
-    # prices
+    # prices values
     price = soup.find('span', class_='offer-price__number')
     try:
       prices.append(price.text)
