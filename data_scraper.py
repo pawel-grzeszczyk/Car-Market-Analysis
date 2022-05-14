@@ -6,58 +6,59 @@ def data_scraper():
   import pandas as pd
   import const
 
-  links = pd.read_csv('datasets/offer_links_tesla.csv', header=None)
-
-  # paramteres that I'm looking for in the offers
-  colnames = ['brand', 'model', 'production_year', 'mileage[KM]', 'fuel_type', 'power[HP]', 'gearbox', 'door_no', 'seat_no', 'color',
-              'origin_country', 'status']
-
-  # prices list
-  prices = []
-
-  # connecting to links and getting information from them
-  for link in links[0]:
-    page = requests.get(link).text
-    soup = BeautifulSoup(page, 'lxml')
-
-    # prices values
-    price = soup.find('span', class_='offer-price__number')
-    try:
-      prices.append(price.text)
-    except:
-      prices.append(NaN)
-
-    # objects where data about parameters are stored
-    params = soup.find_all('li', class_='offer-params__item')
-
-    # finding labels and values of paramters and creating a dictionary from them
-    categories = [i.find("span", class_="offer-params__label").text for i in params]
-
-    values = [i.find("div", class_="offer-params__value").text.strip() for i in params]
-        
-    offer_data = {i:j for i, j in zip(categories, values)}
-
-    keys = ['Marka pojazdu', 'Model pojazdu', 'Rok produkcji', 'Przebieg', 'Rodzaj paliwa', 'Moc', 'Skrzynia biegów', 
-            'Liczba drzwi', 'Liczba miejsc', 'Kolor', 'Kraj pochodzenia', 'Stan']
-
-    # selecting values that I'm looking for and creating a dictionary
-    row = []
-
-    for key in keys:
-      try:
-        row.append([offer_data.get(key)])
-      except:
-        row.append([NaN])
-
-    offer_dictionary = {i:j for i,j in zip(colnames, row)}
     
-    try:
-      df = pd.concat([df, pd.DataFrame(offer_dictionary)], ignore_index=True)
-    except:
-      df = pd.DataFrame(offer_dictionary)
+  links = pd.read_csv('datasets/offer_links_{}.csv'.format(const.brand), header=None)
 
-  # adding prices column to the df
-  df['price[PLN]'] = prices
+  with open('datasets/data_{}.csv'.format(const.brand), 'w', encoding='utf8', newline='') as f:
+    thewriter = csv.writer(f)
 
-  # saving the data to csv file
-  df.to_csv('datasets/data_{}.csv'.format(const.brand), index=False)
+    # colnames
+    colnames = ['brand', 'model', 'production_year', 'mileage[KM]', 'fuel_type', 'power[HP]', 'gearbox', 'door_no', 'seat_no', 'color',
+                'origin_country', 'status']
+    thewriter.writerow(colnames)
+
+    # prices list
+    prices = []
+    price_ix = 0
+
+    # connecting to links and getting information from them
+    for link in links[0]:
+      page = requests.get(link).text
+      soup = BeautifulSoup(page, 'lxml')
+
+      # prices values
+      price = soup.find('span', class_='offer-price__number')
+      try:
+        prices.append(price.text.strip())
+      except:
+        prices.append(NaN)
+
+      # objects where data about parameters are stored
+      params = soup.find_all('li', class_='offer-params__item')
+
+      # finding labels and values of paramters and creating a dictionary from them
+      categories = [i.find("span", class_="offer-params__label").text for i in params]
+
+      values = [i.find("div", class_="offer-params__value").text.strip() for i in params]
+                
+      offer_data = {i:j for i, j in zip(categories, values)}
+
+      # defining values that I'll be looking for in a dictionary
+      keys = ['Marka pojazdu', 'Model pojazdu', 'Rok produkcji', 'Przebieg', 'Rodzaj paliwa', 'Moc', 'Skrzynia biegów', 
+              'Liczba drzwi', 'Liczba miejsc', 'Kolor', 'Kraj pochodzenia', 'Stan']
+
+      # creating a list for each offer
+      row = []
+
+      for key in keys:
+        try:
+          row.append([offer_data.get(key)][0])
+        except:
+          row.append([NaN])
+
+      # adding prices to the corresponding offers     
+      row.append(prices[price_ix])
+      price_ix += 1
+
+      #saving each row in a csv file
+      thewriter.writerow(row)
