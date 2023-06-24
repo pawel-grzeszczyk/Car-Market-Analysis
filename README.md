@@ -56,7 +56,7 @@ Please consider that this repository is still being developed.
 
 - **`data_scraper.py`**
 
-  This Python script iterates over the specified brands and reads the previously scraped links (by `links_scraper.py`) from CSV files. It divides the links into iterations of 1000 links each and retrieves the car data from the corresponding web pages. The extracted data includes parameters such as vehicle brand, model, production year, mileage, engine capacity, fuel type, power, gearbox, price, etc.The retrieved data is then saved in separate CSV files for each brand and iteration. Each CSV file contains rows representing individual car offers, and the columns correspond to the parameters mentioned above.
+  This Python script iterates over the specified brands, reads the previously scraped links (by `links_scraper.py`) and scraps the data from them. It divides the links into iterations of 1000 links each and retrieves the car data from the corresponding web pages. The extracted data includes parameters such as vehicle brand, model, production year, mileage, engine capacity, fuel type, power, gearbox, price, etc.The retrieved data is then saved in separate CSV files for each brand and iteration. Each CSV file contains rows representing individual car offers, and the columns correspond to the parameters mentioned above.
 
 **Data Cleaning (step 2)**
 
