@@ -1,6 +1,6 @@
 # **Car Market Analysis**
 
-Please consider that this repository is still being developed.
+Please consider that this repository is still being developed. ⚒️
 
 ## **Project overview**:
 
