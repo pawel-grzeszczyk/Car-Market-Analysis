@@ -7,7 +7,7 @@ import http.client
 from tqdm import tqdm
 
 # audi, bmw, ford, mercedes-benz, opel, peugeot, renault, skoda, toyota, volkswagen
-brands = ['mercedes-benz', 'opel', 'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
+brands = ['audi', 'bmw', 'ford', 'mercedes-benz', 'opel', 'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
 
 for i in brands:
 

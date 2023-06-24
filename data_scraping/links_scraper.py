@@ -5,7 +5,7 @@ import csv
 from tqdm import tqdm
 
 # audi, bmw, ford, mercedes-benz, opel, peugeot, renault, skoda, toyota, volkswagen
-brands = ['opel', 'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
+brands = ['audi', 'bmw', 'ford', 'mercedes-benz', 'opel', 'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
 
 for i in brands:
 
