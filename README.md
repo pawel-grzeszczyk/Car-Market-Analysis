@@ -42,19 +42,21 @@ Please consider that this repository is still being developed.
 
 ### **Project files:**
 
+**Old files**
+
 **`car_market_analysis.ipynb`**
 
 Old analysis file which will be replaced in the comming days.
 
 **Data Scraping (step 1)**
 
-- **`links_scraper.py`**
+**`links_scraper.py`**
 
-  Used to scrape and extract links from the car market website 'https://www.otomoto.pl'. Scraper iterates over pages for specified brands, gathers offer links and saves them in .csv file. The script utilizes the requests library to send HTTP requests, the BeautifulSoup library for HTML parsing, and the re library for regular expression matching. It also employs the tqdm library to provide a progress bar during the scraping process.
+Used to scrape and extract links from the car market website 'https://www.otomoto.pl'. Scraper iterates over pages for specified brands, gathers offer links and saves them in .csv file. The script utilizes the requests library to send HTTP requests, the BeautifulSoup library for HTML parsing, and the re library for regular expression matching. It also employs the tqdm library to provide a progress bar during the scraping process.
 
-- **`data_scraper.py`**
+**`data_scraper.py`**
 
-  This Python script iterates over the specified brands and reads the previously scraped links (by `links_scraper.py`) from CSV files. It divides the links into iterations of 1000 links each and retrieves the car data from the corresponding web pages. The extracted data includes parameters such as vehicle brand, model, production year, mileage, engine capacity, fuel type, power, gearbox, price, etc.The retrieved data is then saved in separate CSV files for each brand and iteration. Each CSV file contains rows representing individual car offers, and the columns correspond to the parameters mentioned above.
+This Python script iterates over the specified brands and reads the previously scraped links (by `links_scraper.py`) from CSV files. It divides the links into iterations of 1000 links each and retrieves the car data from the corresponding web pages. The extracted data includes parameters such as vehicle brand, model, production year, mileage, engine capacity, fuel type, power, gearbox, price, etc.The retrieved data is then saved in separate CSV files for each brand and iteration. Each CSV file contains rows representing individual car offers, and the columns correspond to the parameters mentioned above.
 
 **Data Cleaning (step 2)**
 
