@@ -5,17 +5,20 @@ import pandas as pd
 import csv
 import http.client
 from tqdm import tqdm
+import os
 
 # audi, bmw, ford, mercedes-benz, opel, peugeot, renault, skoda, toyota, volkswagen
-brands = ['audi', 'bmw', 'ford', 'mercedes-benz', 'opel', 'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
+brands = ['audi', 'bmw', 'ford', 'mercedes-benz', 'opel',
+          'peugeot', 'renault', 'skoda', 'toyota', 'volkswagen']
 
 for i in brands:
 
     BRAND = i
     print(f'Scraping brand: {BRAND}')
+    print(os.listdir())
 
-    all_links = pd.read_csv(f'offer_links/offer_links_{BRAND}.csv',
-                        header=None)[0]
+    all_links = pd.read_csv(f'data_scraping/data/links/offer_links_{BRAND}.csv',
+                            header=None)[0]
 
     iterations_no = (len(all_links) // 1000) + 1
     print(f'There will be {iterations_no} iterations')
@@ -30,7 +33,7 @@ for i in brands:
 
         links = all_links[start:end]
 
-        with open(f'data/data_{BRAND}_{i}.csv', 'w', encoding='utf8', newline='') as f:
+        with open(f'data_scraping/data/datasets/data_{BRAND}_{i}.csv', 'w', encoding='utf8', newline='') as f:
             thewriter = csv.writer(f)
 
             # colnames

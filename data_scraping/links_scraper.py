@@ -47,7 +47,7 @@ for i in brands:
                     continue
 
                 # open file to store links
-                file_name = f'offer_links/offer_links_{BRAND}.csv'
+                file_name = f'data_scraping/data/links/offer_links_{BRAND}.csv'
                 csv_file = open(file_name, "w", newline='')
                 writer = csv.writer(csv_file)
 
