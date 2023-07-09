@@ -67,3 +67,9 @@ Please consider that this repository is still being developed. ⚒️
 **Data Analysis (steps 3, 4, 5)**
 
 **Machine Learning (steps 6, 7)**
+
+**Other**
+
+- **`utils.py`**
+
+  The utils.py module provides a collection of reusable functions and utilities designed to streamline common tasks and improve the efficiency of the project. These functions are imported and used in other Python notebooks within the project.
