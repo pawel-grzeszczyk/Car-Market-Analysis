@@ -16,7 +16,7 @@ Please consider that this repository is still being developed. ⚒️
 
    Building web scraping program and using it to gather real data.
 
-2. **Data cleaning** ❌
+2. **Data cleaning** ✅
 
    Due to the fact that the scraped data is sourced from the internet and was self-filled by website users, it will require thorough cleaning.
 
@@ -59,6 +59,10 @@ Please consider that this repository is still being developed. ⚒️
   This Python script iterates over the specified brands, reads the previously scraped links (by `links_scraper.py`) and scraps the data from them. It divides the links into iterations of 1000 links each and retrieves the car data from the corresponding web pages. The extracted data includes parameters such as vehicle brand, model, production year, mileage, engine capacity, fuel type, power, gearbox, price, etc.The retrieved data is then saved in separate CSV files for each brand and iteration. Each CSV file contains rows representing individual car offers, and the columns correspond to the parameters mentioned above.
 
 **Data Cleaning (step 2)**
+
+- **`data_cleaning.ipynb`**
+
+  The data_cleaning.ipynb notebook provides the necessary steps and code for cleaning and preprocessing the raw car market data. The data cleaning process is essential to ensure the quality and reliability of the data before performing any analysis or modeling tasks. Result of this notebook is a cleaned dataset.
 
 **Data Analysis (steps 3, 4, 5)**
 
