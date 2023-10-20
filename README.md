@@ -20,7 +20,7 @@ Please consider that this repository is still being developed. ⚒️
 
    Due to the fact that the scraped data is sourced from the internet and was self-filled by website users, it will require thorough cleaning.
 
-3. **Quantitative analysis** ❌
+3. **Quantitative analysis** ✅
 
    Familiarizing oneself with the data and discovering its structure through data aggregation and visualization.
 
