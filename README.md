@@ -24,7 +24,7 @@ Please consider that this repository is still being developed. ⚒️
 
    Familiarizing oneself with the data and discovering its structure through data aggregation and visualization.
 
-4. **Price analysis** ❌
+4. **Price analysis** ✅
 
    Checking the distribution of car prices and conducting a basic analysis to determine how car parameters influence its price.
 
@@ -35,4 +35,3 @@ Please consider that this repository is still being developed. ⚒️
 6. **Selection of the best model** ❌
 
    Comparison of model results and selection of the best performing model
-   
